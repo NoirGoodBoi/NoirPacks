@@ -1,9 +1,16 @@
--- SETTINGS
-getgenv().Setting = {
-    ["Body"] = {
-        ["Korblox"] = false,
-        ["Headless"] = true,
-    },
-}
+local function onCharacterAdded(character)
+    wait(1) 
+    
+    local head = character:FindFirstChild("Head")
+    if head then
+        head.MeshId = "http://www.roblox.com/asset/?id=6686307858"
+        head.TextureID = "http://www.roblox.com/asset/?id=6686307858"
+        head.Transparency = 1 
+    end
+end
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/khen791/script-khen/refs/heads/main/KorbloxAndHeadless.txt", true))()
+game.Players.LocalPlayer.CharacterAdded:Connect(onCharacterAdded)
+
+if game.Players.LocalPlayer.Character then
+    onCharacterAdded(game.Players.LocalPlayer.Character)
+end
